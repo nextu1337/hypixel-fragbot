@@ -27,7 +27,7 @@ class HyLib {
     log(...args)
     {
         // I should probably put something here
-        console.log(args);
+        console.log(args.join("\n"));
         this.sendToWebhook(this.webhook,args.join("\n"))
     }
 }
