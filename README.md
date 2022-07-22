@@ -8,7 +8,7 @@ Simple FragBot for Hypixel SkyBlock.<br><br>
 <br>
 
 # Important
-Your second minecraft account CAN'T have Dungeons unlocked (it should be on an ironman/stranded profile or shouldn't have a hypixel skyblock profile)<br>
+Your second minecraft account CAN'T have Dungeons unlocked (under Combat Level 5)<br>
 Otherwise the account will get teleported to the dungeons and I have a feeling it may get banned. (minecraft-protocol simulates a minecraft client and doesn't simulate minecraft's gravity meaning the bot will probably be flying)<br>
 
 # Installation
