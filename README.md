@@ -150,13 +150,9 @@ client.on('message', msg => {
 
 client.login('token')
 ```
-# Kinda useless information
-If you want to change messages sent to the webhook, open fragbot.js file with code editor and change messages inside hylib.log functions.<br>
-HyLib is the name of the library as I had no idea what to name it and because the bot is all about hypixel skyblock I decided to name it HyLib<br>
-<br>
-Modules used in the making of this bot:
+# Modules used
 ```
 minecraft-protocol
 node-fetch@2.6.5
 ```
-## The fragbot was created for educational purposes. I do not take responsibility if for whatever reason your account got banned (which shouldn't happen, after the bot gets sent to Limbo it should stay there)
+## The fragbot was created for educational purposes. I do not take responsibility if for whatever reason your account got banned (which shouldn't happen, after the bot gets sent to limbo, it's safe)
