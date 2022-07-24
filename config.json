@@ -1,0 +1,8 @@
+{
+    "username": "frag bot username",
+    "email": "Put your email here",
+    "password": "Put password here",
+    "auth": "microsoft",
+    "webhook": null,
+    "blacklisted": ["hypixel","PewDiePie"]
+}
