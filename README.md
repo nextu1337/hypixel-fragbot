@@ -1,5 +1,5 @@
 # hypixel-fragbot
-Simple FragBot for Hypixel SkyBlock.<br><br>
+Simple FragBot Library for Hypixel SkyBlock.<br><br>
 
 # Requirements
 - node.js
@@ -20,21 +20,136 @@ To configure the fragbot, simply open config.json and set email and password.<br
 If you still haven't migrated your account to Microsoft, make sure to change 
 `"auth": "microsoft"` to `"auth":"mojang"`<br>
 `webhook` field is where you wanna put your discord webhook link.<br>
-If you don't want webhooks to be sent to your server, just set `webhook` to `null` without the quotation marks<br>
+If you don't want webhooks to be sent to your server, just set `webhook` value to `null` without the quotation marks<br>
 In the end your file shoud look something like this
 ```json
 {
+    "username": "FragBot",
     "email": "example@gmail.com",
     "password": "P4$$w0rd",
     "auth": "microsoft",
-    "webhook": "https://discord.com/api/webhooks/XXXXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    "webhook": "https://discord.com/api/webhooks/XXXXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "blacklisted": ["hypixel","PewDiePie"]
 }
 ```
 
 # Running
 Now that everything is set up, run the bot using start.bat file<br>
-If for whatever reason the start file doesn't work for you, start the bot by running fragbot.js<br>
+If for whatever reason the start file doesn't work for you, start the bot by running index.js<br>
 
+# Examples
+## Simplest FragBot
+```js
+const FragBot = require("./fragbot");
+const config = require("./config.json");
+
+let bot = new FragBot(config);
+```
+## Custom Messages
+```js
+const FragBot = require("./fragbot");
+const config = require("./config.json");
+
+let bot = new FragBot(config);
+bot.setMessage("join", "Successfully connected to the server as %s")
+bot.setMessage("end", "%s was kicked from the server")
+bot.setMessage("invite", "%i invited %s to the party. His position in queue is %p")
+bot.setMessage("joined", "%s joined %i's party")
+bot.setMessage("disband", "%i didn't join the dungeons in time. L")
+bot.setMessage("dungeons", "%i joined the dungeons. Leaving the party...")
+bot.setMessage("disbanded", "%i disbanded the party.")
+bot.setMessage("limbo", "%s got sent to the Limbo. It's fully safe now")
+/*
+First argument can be:
+- join, when fragbot joins the server
+- end, when fragbot gets kicked
+- invite, when fragbot gets invited to the party
+- joined, when fragbot joins the party
+- disband, when fragbot disbands the party (user didn't join the dungeons)
+- dungeons, when user joins the dungeons
+- disbanded, when user disbands the party
+- limbo, when fragbot gets sent to the limbo
+*/
+```
+## Event Listeners
+```js
+const FragBot = require("./fragbot");
+const config = require("./config.json");
+
+let bot = new FragBot(config);
+
+bot.once("join",()=>{
+    // FragBot joined the server
+})
+
+bot.once("end",()=>{
+    // FragBot got kicked
+})
+
+bot.once("limbo",()=>{
+    // FragBot was sent to the limbo
+})
+
+bot.on("queued",(username,position)=>{
+    // username partied the fragbot
+})
+
+bot.on("dungeons",(username)=>{
+    // username joined the dungeons
+})
+
+bot.on("disbanded",(username)=>{
+    // username disbanded the party
+    // to add him to the blacklist do
+    // bot.config.blacklisted.push(username);
+})
+
+bot.on("chat",(packet)=>{
+    // More of a debug event
+    // Receives all the chat packets the bot receives
+})
+
+bot.on("packet",(packet)=>{
+    // More of a debug event
+    // Receives all packets the bot receives
+})
+```
+## Custom Logger
+```js
+const FragBot = require("./fragbot");
+const config = require("./config.json");
+let logs = [];
+let bot = new FragBot(config);
+
+function log(message)
+{
+    logs.push(message)
+    console.log("["+new Date().toLocaleTimeString()+"] "+message)
+}
+
+bot.log = log
+```
+## Discord.js v12 bot
+```js
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const FragBot = require("./fragbot");
+const config = require("./config.json");
+let fb = null;
+client.on('message', msg => {
+  if (msg.content === '.start') {
+    if(fb != null) return;
+    fb = new FragBot();
+    msg.channel.send("FragBot has been started")
+    fb.once("join",()=>{msg.channel.send(fb.username+" connected to hypixel")})
+    fb.once("end",()=>{msg.channel.send(fb.username+" was kicked from hypixel");fb = null;})
+    fb.once("limbo",()=>{msg.channel.send(fb.username+" was sent to limbo")});
+    // cba to continue but you get the point
+  }
+});
+
+client.login('token')
+```
 # Kinda useless information
 If you want to change messages sent to the webhook, open fragbot.js file with code editor and change messages inside hylib.log functions.<br>
 HyLib is the name of the library as I had no idea what to name it and because the bot is all about hypixel skyblock I decided to name it HyLib<br>
