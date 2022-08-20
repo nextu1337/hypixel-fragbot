@@ -9,8 +9,10 @@ Simple FragBot Library for Hypixel SkyBlock.<br><br>
 
 # Important
 Your second minecraft account CAN'T have Dungeons unlocked (under Combat Level 5)<br>
-Otherwise the account will get teleported to the dungeons and I have a feeling it may get banned. (minecraft-protocol simulates a minecraft client and doesn't simulate minecraft's gravity meaning the bot will probably be flying)<br>
-
+Otherwise the account will get teleported to the dungeons and I have a feeling it may get banned. (minecraft-protocol simulates a minecraft client and doesn't simulate minecraft's gravity meaning the bot will probably be flying)<br><br>
+FYI I was lazy when making this project (actually it's a rewrite, the first project was messy)<br>
+Due to that, in config.json you can set fragbot username to whatever you'd like. Don't worry, it's only used to send webhooks notifs and log stuff<br>
+I suppose I could detect the username once the bot joins, but I don't see the point, if anyone's feeling generous, make a pull request<br>
 # Installation
 To install required modules for the fragbot run install.bat file and wait for npm to install everything
 <br>
