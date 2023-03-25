@@ -1,1 +1,1 @@
-new (require("./fragbot")(require("./config.json")));
+new (require("./fragbot"))(require("./config.json"));
