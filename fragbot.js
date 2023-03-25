@@ -38,7 +38,7 @@ class FragBot extends EventEmitter  {
        this.queue = [];
        this.current = null;
 
-        this.client = mc.createClient({host: "mc.hypixel.net",port: 25565,username: config.email,password: config.password,auth: config.auth});
+        this.client = mc.createClient({host: "mc.hypixel.net",version:"1.18.2",port: 25565,username: config.email,password: config.password,auth: config.auth});
         this.client.on("connect",()=>{
             this.emit("connect");
             this.log(this.#tm(this.messages.join))
