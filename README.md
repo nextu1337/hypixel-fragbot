@@ -42,7 +42,7 @@ If for whatever reason the start file doesn't work for you, start the bot by run
 
 # Examples
 ## Simplest way to implement the FragBot
-#####(As of version 1.1, will work if account was migrated to `microsoft`)
+##### (As of version 1.1, will work if account was migrated to `microsoft`)
 config.json:
 ```json
 {"email": "example@mail.com","password": "exampleP4SSword"}
