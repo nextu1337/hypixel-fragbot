@@ -1,5 +1,7 @@
 # hypixel-fragbot
 Simple FragBot Library for Hypixel SkyBlock.<br><br>
+Put any suggestions in the `Issues` tab!
+
 
 # Requirements
 - node.js
@@ -8,21 +10,18 @@ Simple FragBot Library for Hypixel SkyBlock.<br><br>
 <br>
 
 # Important
-Your second minecraft account CAN'T have Dungeons unlocked (under Combat Level 5) or must be in Limbo (for that you'll need to wait a bit)<br>
-Otherwise the account will get teleported to the dungeons and I have a feeling it might get banned. (minecraft-protocol simulates a minecraft client and doesn't simulate minecraft's gravity meaning the bot will probably be flying, mineflayer does that although servers with any anticheat will detect it)<br><br>
-In config.json you can set fragbot username to whatever you'd like. Don't worry, it's only used to send webhooks notifs and log stuff<br>
+- Your bot account should either not have dungeons unlocked or be in Limbo (AFK for long enough).
+- In the config.json file, you can set the username to whatever you like. This value is only used for sending webhook notifications and logging purposes.
 
 # Installation
-To install required modules for the fragbot run install.bat file and wait for npm to install everything
-<br>
+To install the necessary modules for the fragbot, you need to run the `install.bat` file. This will initiate the installation process using `npm`, and you should wait until it finishes installing all the modules.
 
 # Configuration
-To configure the fragbot, simply open config.json and set email and password.<br>
-If you still haven't migrated your account to Microsoft, make sure to change 
-`"auth": "microsoft"` to `"auth":"mojang"`<br>
-`webhook` field is where you wanna put your discord webhook link.<br>
-If you don't want webhooks to be sent to your server, just set `webhook` value to `null` without the quotation marks<br>
-In the end your file should look something like this
+To set up the fragbot, you need to open the config.json file and update the email and password. If you haven't moved your account to Microsoft, change "auth": "microsoft" to "auth":"mojang".
+
+For the webhook field, put the link to your Discord webhook where you want the notifications to go. If you don't want to receive notifications via webhook, set webhook to null, without the quotation marks.
+
+After you've made these changes, your config.json file should look something like this.
 
 NOTE: As of version 1.1, `blacklisted` field was changed into `whitelist` and so changed its behavior. If it's empty (like in the example), the `whitelist is turned off`. If it has 1 or more items (example: `"whitelist": ["player1","player2"]`) it will be on.
 ```json
@@ -146,3 +145,5 @@ minecraft-protocol
 node-fetch@2.6.5
 ```
 ## The fragbot was created for educational purposes. I do not take responsibility if for whatever reason your account got banned (which shouldn't happen, after the bot gets sent to limbo, it's safe)
+
+### Credits to ChatGPT for helping me enhance README.md
