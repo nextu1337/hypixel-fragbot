@@ -4,5 +4,5 @@
     "password": "Put password here",
     "auth": "microsoft",
     "webhook": null,
-    "blacklisted": ["hypixel","PewDiePie"]
+    "whitelist": ["hypixel","PewDiePie"]
 }
