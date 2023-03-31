@@ -41,7 +41,8 @@ Now that everything is set up, run the bot using start.bat file<br>
 If for whatever reason the start file doesn't work for you, start the bot by running index.js<br>
 
 # Examples
-## Simplest way to implement the FragBot (As of version 1.1, will work if account was migrated to `microsoft`)
+## Simplest way to implement the FragBot
+#####(As of version 1.1, will work if account was migrated to `microsoft`)
 config.json:
 ```json
 {"email": "example@mail.com","password": "exampleP4SSword"}
