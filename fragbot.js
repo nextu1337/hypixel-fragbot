@@ -31,10 +31,11 @@ class FragBot extends EventEmitter  {
     constructor(config)
     {
        super();
-       this.username = config.username;
-       this.wh = config.webhook;
+       this.config = {...{"username":"FragBot","auth":"microsoft","whitelist":[]},...config};
+       this.username = this.config.username;
+       this.wh = this.config.webhook;
        this.log = message => log(this.wh,message);
-       this.config = config;
+       
        this.queue = [];
        this.current = null;
 
@@ -97,7 +98,7 @@ class FragBot extends EventEmitter  {
         if(msg.includes(" has invited you to join their party!"))
         {
             let username = partyInviteGetUsername(msg);
-            if(!this.config.whitelist.includes(username)) return;
+            if(this.config.whitelist.length > 0 && !this.config.whitelist.includes(username)) return;
             if(username.includes(" ")) return;
             if(this.queue.includes(username)) return; // Theoretically shouldn't happen
             this.queue.push(username);
