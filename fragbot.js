@@ -97,7 +97,7 @@ class FragBot extends EventEmitter  {
         if(msg.includes(" has invited you to join their party!"))
         {
             let username = partyInviteGetUsername(msg);
-            if(this.config.blacklisted.includes(username)) return;
+            if(!this.config.whitelist.includes(username)) return;
             if(username.includes(" ")) return;
             if(this.queue.includes(username)) return; // Theoretically shouldn't happen
             this.queue.push(username);
